@@ -7,8 +7,6 @@ package schoolsystemproject;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 /**
@@ -27,34 +25,19 @@ import javafx.stage.Stage;
  *
  * @author Nina
  */
-public class CourseAddController implements Initializable {
-    static Course course;
+public class CourseViewController implements Initializable {
     
-    @FXML private Button back;
-    @FXML private Button removeCourse; 
-    @FXML private Button addCourse;
-    @FXML private ListView<Course> list; 
-    @FXML private TextField addName;
-    @FXML private TextField addSubject;
-    @FXML private TextField addNumber;
-    @FXML private TextField addCredit; 
-    private List<Course> courseList;
-  
-    //adds a course object to the courseList
-    @FXML
-    public void addCourse(TextField course) {
-        list.getItems();
-        //get object associated with list view
-        list.add(course.getText());
-    }
-    
-    
-    //fields for switching scenes
+    @FXML private Button back; 
+    @FXML private ListView courseListView;
+    @FXML private TextArea courseDetails; 
+            
+
+    //fields for scene switch
     private Stage stage; 
     private Scene scene; 
     private Parent parent;
     
-    //method to return to main scene 
+    //method to return to main scene
     @FXML
     public void returnToMain(ActionEvent event) throws IOException {
         this.parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -65,21 +48,9 @@ public class CourseAddController implements Initializable {
     }
     
     
-    
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        course = new Course();
-        
-        List<String> courseListAsStrings = new ArrayList<>();
-        
-        ObservableList<Lemonade> items = FXCollections.observableList(LemonadeStand2.cart.getCart());
-        cartListView.setItems(items);
-
-        setLabels();
-        
-        
+        // TODO
     }    
     
 }

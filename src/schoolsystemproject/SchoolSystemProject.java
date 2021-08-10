@@ -17,6 +17,8 @@ import javafx.stage.Stage;
  */
 public class SchoolSystemProject extends Application {
     
+    static Course course;
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -26,11 +28,15 @@ public class SchoolSystemProject extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+    //initialize and declare static members
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        course = new Course();
         launch(args);
     }
     

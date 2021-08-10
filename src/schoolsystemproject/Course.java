@@ -1,4 +1,7 @@
 
+import java.util.List;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +20,7 @@ public class Course {
     private String courseNumber; //3 numbers that rep course number
     private Professor professor; //represents prof teaching this class 
     private int creditHours;
+    private List<Course> courseList; 
     
     //methods 
     public Course(String name, String subj, String num, Professor prof, int cred) {
@@ -28,6 +32,21 @@ public class Course {
         creditHours = cred;
     }
     
+    //prints all classes the prof teaches
+    public void showClasses() {
+        System.out.println("Courses taught by this professor: ");
+        for (int i = 0; i < courseList.size(); i++)
+            System.out.println(courseList.get(i).toString());
+    }
+    
+    //adds a class object to the coursesTaught list
+    public void addClass(Course course) {
+        courseList.add(course);
+        System.out.println(course.toString() + " has been added to Professor's Course List");
+    }
+    
+    
+ 
     //get + set Course Name
     public void setCourseName(String newName) {
         this.courseName = newName;
@@ -73,11 +92,19 @@ public class Course {
     }
     
     
+    
+    public List<Course> getCourseList() {
+        return this.courseList;
+    }
+    
+    
+    
     public void fullCourseID() {
         //return concatenation of course subject and number with "-" in between
         //Ex. CSC-111 or MAT-256
         System.out.println("Full Course ID: " + this.courseSubject + "-" + this.courseNumber);
     }
+   
     
     @Override
     public String toString() {
