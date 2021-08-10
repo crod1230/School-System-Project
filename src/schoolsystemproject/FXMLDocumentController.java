@@ -26,9 +26,12 @@ import javafx.stage.Stage;
 public class FXMLDocumentController implements Initializable {
     
     
-    @FXML private Button courses;
-    @FXML private Button professors;
-    @FXML private Button students;
+    @FXML private Button addCourse;
+    @FXML private Button addProfessor;
+    @FXML private Button addStudent;
+    @FXML private Button viewCourses;
+    @FXML private Button viewProfessors;
+    @FXML private Button viewStudents;
             
     
     private Stage stage; 
@@ -36,7 +39,7 @@ public class FXMLDocumentController implements Initializable {
     private Parent parent;
     
     @FXML
-    public void switchToCourses(ActionEvent event) throws IOException {
+    public void switchToCourseAdd(ActionEvent event) throws IOException {
         this.parent = FXMLLoader.load(getClass().getResource("CourseAdd.fxml"));
         this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         this.scene = new Scene(parent); 
@@ -45,7 +48,16 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    public void switchToProfessors(ActionEvent event) throws IOException {
+    public void switchToCourseView(ActionEvent event) throws IOException {
+        this.parent = FXMLLoader.load(getClass().getResource("Course View.fxml"));
+        this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        this.scene = new Scene(parent); 
+        this.stage.setScene(scene);
+        this.stage.show();
+    }
+    
+    @FXML
+    public void switchToProfessorAdd(ActionEvent event) throws IOException {
         this.parent = FXMLLoader.load(getClass().getResource("ProfessorAdd.fxml"));
         this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         this.scene = new Scene(parent); 
@@ -54,8 +66,26 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    public void switchToStudents(ActionEvent event) throws IOException {
-        this.parent = FXMLLoader.load(getClass().getResource("CourseAdd.fxml"));
+    public void switchToProfessorView(ActionEvent event) throws IOException {
+        this.parent = FXMLLoader.load(getClass().getResource("ProfessorView.fxml"));
+        this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        this.scene = new Scene(parent); 
+        this.stage.setScene(scene);
+        this.stage.show();
+    }
+    
+    @FXML
+    public void switchToStudentAdd(ActionEvent event) throws IOException {
+        this.parent = FXMLLoader.load(getClass().getResource("StudentAdd.fxml"));
+        this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        this.scene = new Scene(parent); 
+        this.stage.setScene(scene);
+        this.stage.show();
+    }
+    
+    @FXML
+    public void switchToStudentView(ActionEvent event) throws IOException {
+        this.parent = FXMLLoader.load(getClass().getResource("StudentView.fxml"));
         this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         this.scene = new Scene(parent); 
         this.stage.setScene(scene);
@@ -64,7 +94,6 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         
     }    
     

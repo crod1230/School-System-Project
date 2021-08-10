@@ -1,4 +1,4 @@
-
+package schoolsystemproject;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -16,11 +16,11 @@ public class Professor {
     private String name; //name of teacher 
     private String edulvl; //education level (bachelor, master, etc.)
     private String dpt; //subject they teach 
-    private int finalID; //unique identification for all teachers 
+    private String finalID; //unique identification for all teachers 
     List<Course> coursesTaught; //list of courses the prof teaches
     
     //name, dob, department, education lvl
-    public Professor(String n, LocalDate b, String d, String e, int i) {
+    public Professor(String n, LocalDate b, String d, String e, String i) {
         //set parameters in parenthesis 
         name = n;
         dob = b;
@@ -52,7 +52,6 @@ public class Professor {
     //adds a class object to the coursesTaught list
     public void addClass(Course course) {
         coursesTaught.add(course);
-        System.out.println(course.toString() + " has been added to Professor's Course List");
     }
     
     
@@ -91,6 +90,10 @@ public class Professor {
     }
     public String getEduLvl() {
         return this.edulvl;
+    }
+    
+    public String getFinalID() {
+        return this.finalID;
     }
     
     @Override

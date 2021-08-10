@@ -1,4 +1,4 @@
-
+package schoolsystemproject;
 import java.util.List;
 
 
@@ -19,16 +19,15 @@ public class Course {
     private String courseSubject; //3 letter acronym (CSC or MAT)
     private String courseNumber; //3 numbers that rep course number
     private Professor professor; //represents prof teaching this class 
-    private int creditHours;
+    private Integer creditHours;
     private List<Course> courseList; 
     
     //methods 
-    public Course(String name, String subj, String num, Professor prof, int cred) {
+    public Course(String name, String subj, String num, Integer cred) {
         //sets all fields 
         courseName = name;
         courseSubject = subj;
         courseNumber = num;
-        professor = prof;
         creditHours = cred;
     }
     

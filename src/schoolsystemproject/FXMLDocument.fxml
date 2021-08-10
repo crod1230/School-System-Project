@@ -24,7 +24,11 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="courses" mnemonicParsing="false" onAction="#switchToCourses" text="View Courses" />
+                  <Button fx:id="addCourse" mnemonicParsing="false" onAction="#switchToCourseAdd" text="Add Courses" />
+                  <Button fx:id="viewCourses" mnemonicParsing="false" onAction="#switchToCourseView" text="View Courses">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -34,7 +38,11 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="professors" mnemonicParsing="false" onAction="#switchToProfessors" text="View Profs" />
+                  <Button fx:id="addProfessor" mnemonicParsing="false" onAction="#switchToProfessorAdd" text="Add Profs" />
+                  <Button fx:id="viewProfessors" mnemonicParsing="false" onAction="#switchToProfessorView" text="View Profs">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -44,7 +52,11 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="students" mnemonicParsing="false" onAction="#switchToStudents" text="View Students" />
+                  <Button fx:id="addStudent" mnemonicParsing="false" onAction="#switchToStudentAdd" text="Add Students" />
+                  <Button fx:id="viewStudents" mnemonicParsing="false" onAction="#switchToStudentView" text="View Students">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
          </children>

@@ -1,4 +1,4 @@
-
+package schoolsystemproject;
 
 
 import java.time.LocalDate;
@@ -17,12 +17,12 @@ public class Student {
     private String name; //student full name
     private String grade; //student grade level
     private String major; //student major 
-    private int finalID; //identification number
+    private String finalID; //identification number
     private List<Course> coursesTaking; //list of courses student is taking
-    private int creditHours; //keeps count of credit hours for classes taken
+    private Integer creditHours; //keeps count of credit hours for classes taken
     
     //methods 
-    public Student(String n, LocalDate d, String g, String m, int i) {
+    public Student(String n, LocalDate d, String g, String m, String i) {
         //set all fields EXCEPT coursesTaking and credit 
         name = n;  
         dob = d;
@@ -93,10 +93,10 @@ public class Student {
     }
     
     //get + set Final ID
-    public void setFinalID(int newID) {
+    public void setFinalID(String newID) {
         this.finalID = newID;
     }
-    public int getFinalID() {
+    public String getFinalID() {
         return this.finalID;
     }
 }

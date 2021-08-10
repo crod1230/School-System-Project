@@ -1,6 +1,9 @@
 
 
 import java.time.LocalDate;
+import schoolsystemproject.Course;
+import schoolsystemproject.Professor;
+import schoolsystemproject.Student;
 
 /**
  *
@@ -16,18 +19,18 @@ public class SchoolSystemTest {
         LocalDate p2 = LocalDate.of(1975, 10, 12);
         
         //create 2 student objects
-        Student student1 = new Student("Carina Rodriguez", s1, "Freshman", "Art", 9352649);
-        Student student2 = new Student("Diego Rodriguez", s2, "Senior", "Computer Science", 8241538);
+        Student student1 = new Student("Carina Rodriguez", s1, "Freshman", "Art", "9352649");
+        Student student2 = new Student("Diego Rodriguez", s2, "Senior", "Computer Science", "8241538");
         
         //create 2 teacher objects
-        Professor professor1 = new Professor("Jayna Huffines", p1, "Art", "Bachelors", 1234567);
-        Professor professor2 = new Professor("Richard Hunt", p2, "Computer Science", "Masters", 7654321);
+        Professor professor1 = new Professor("Jayna Huffines", p1, "Art", "Bachelors", "1234567");
+        Professor professor2 = new Professor("Richard Hunt", p2, "Computer Science", "Masters", "7654321");
         
         //create course obj and assign the teacher objects to each of the courses 
-        Course course1 = new Course("Math", "MAT", "001", professor2, 3);
-        Course course2 = new Course("English", "ENG", "002", professor1, 3); 
-        Course course3 = new Course("Intro to Computer Science", "CSC", "003", professor2, 3); 
-        Course course4 = new Course("Visual Arts", "ART", "004", professor1, 3);
+        Course course1 = new Course("Math", "MAT", "001", 3);
+        Course course2 = new Course("English", "ENG", "002", 3); 
+        Course course3 = new Course("Intro to Computer Science", "CSC", "003", 3); 
+        Course course4 = new Course("Visual Arts", "ART", "004", 3);
 
 
         System.out.println("Student 1 Name: " + student1.getName());

@@ -7,6 +7,8 @@ package schoolsystemproject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -24,11 +30,74 @@ import javafx.stage.Stage;
  * @author Nina
  */
 public class StudentAddController implements Initializable {
-    @FXML private Button back;
     
+    @FXML private Button back;
+    @FXML private Button removeStudent;
+    @FXML private Button addStudent;
+    @FXML private Button addCourse;
+    @FXML private ListView studentList;
+    @FXML private ListView coursesAvailable;
+    @FXML private TextField name;
+    @FXML private DatePicker dob;
+    @FXML private TextField grade;
+    @FXML private TextField major;
+    @FXML private TextField finalID;
+    
+    
+    //fields for switching scene 
     private Stage stage; 
     private Scene scene; 
     private Parent parent;
+    
+    //Fields for adding a professor 
+    private String studentName; 
+    private LocalDate studentDoB;
+    private String studentGrade;
+    private String studentMajor;
+    private String studentID; 
+    
+    
+    
+    public void addStudent() {
+        
+        //take data from text fields 
+        this.studentDoB = this.dob.getValue(); //gets local date from datePicker
+        this.studentName = this.name.getText().toString();
+        this.studentGrade = this.grade.getText().toString();
+        this.studentMajor = this.major.getText().toString();
+        this.studentID = this.finalID.getText().toString();
+        
+        
+        //create new student object using data 
+        Student newStudent = new Student(studentName, studentDoB, studentGrade, studentMajor, studentID);
+        
+        
+        //add student object to static list of students
+        SchoolSystemProject.listOfStudents.add(newStudent);
+        
+        
+        //clear all text fields 
+        this.name.setText("");
+        this.dob.getEditor().clear();
+        this.grade.setText("");
+        this.major.setText("");
+        this.finalID.setText("");
+        
+    }
+    
+    
+    public void removeStudent() {
+        
+    }
+    
+    public void addCoursetoStudent() {
+        
+    }
+    
+    
+    
+    
+    
     
     @FXML
     public void returnToMain(ActionEvent event) throws IOException {

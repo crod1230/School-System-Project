@@ -5,6 +5,8 @@
  */
 package schoolsystemproject;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +19,10 @@ import javafx.stage.Stage;
  */
 public class SchoolSystemProject extends Application {
     
-    static Course course;
+    static List<Professor> listOfProfs;
+    static List<Course> listOfCoursesTeaching;
+    static List<Student> listOfStudents;
+    static List<Course> listOfCoursesTaking;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -36,7 +41,12 @@ public class SchoolSystemProject extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        course = new Course();
+        
+        listOfProfs = new ArrayList<>();
+        listOfCoursesTeaching = new ArrayList<>();
+        listOfStudents = new ArrayList<>();
+        listOfCoursesTaking = new ArrayList<>();
+        
         launch(args);
     }
     

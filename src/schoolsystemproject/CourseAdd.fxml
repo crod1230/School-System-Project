@@ -21,7 +21,7 @@
                         <Insets left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </ListView>
-                  <Button fx:id="back" mnemonicParsing="false" onAction="#returnToMain" text="Remove Course">
+                  <Button fx:id="removeCourse" mnemonicParsing="false" text="Remove Course">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -91,7 +91,7 @@
                      </VBox.margin>
                   </HBox>
                   <Button fx:id="addCourse" mnemonicParsing="false" onAction="#addCourse" text="Add" />
-                  <Button mnemonicParsing="false" text="Return">
+                  <Button fx:id="back" mnemonicParsing="false" onAction="#returnToMain" text="Return">
                      <VBox.margin>
                         <Insets left="200.0" top="92.0" />
                      </VBox.margin>

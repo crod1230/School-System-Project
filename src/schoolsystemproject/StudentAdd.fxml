@@ -17,12 +17,12 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Label text="Student List " />
-                  <ListView prefHeight="280.0" prefWidth="200.0">
+                  <ListView fx:id="studentList" prefHeight="280.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </ListView>
-                  <Button mnemonicParsing="false" text="Remove">
+                  <Button fx:id="removeStudent" mnemonicParsing="false" onAction="#removeStudent" text="Remove">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -38,7 +38,7 @@
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label text="Name: " />
-                        <TextField prefHeight="25.0" prefWidth="150.0">
+                        <TextField fx:id="name" prefHeight="25.0" prefWidth="150.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -55,25 +55,19 @@
                               <Insets right="8.0" />
                            </HBox.margin>
                         </Label>
-                        <DatePicker prefHeight="25.0" prefWidth="150.0" />
+                        <DatePicker fx:id="dob" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label text="Grade: " />
-                        <TextField prefHeight="25.0" prefWidth="150.0" />
+                        <TextField fx:id="grade" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label text="Major: " />
-                        <TextField />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Credit: " />
-                        <TextField />
+                        <TextField fx:id="major" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -83,10 +77,10 @@
                               <Insets right="20.0" />
                            </padding>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="finalID" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Add">
+                  <Button fx:id="addStudent" mnemonicParsing="false" onAction="#addStudent" text="Add">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -99,19 +93,19 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Label text="Courses Available" />
-                  <ListView prefHeight="280.0" prefWidth="200.0">
+                  <ListView fx:id="coursesAvailable" prefHeight="280.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </ListView>
                   <HBox alignment="CENTER" prefHeight="62.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Add">
+                        <Button fx:id="addCourse" mnemonicParsing="false" onAction="#addCoursetoStudent" text="Add">
                            <HBox.margin>
                               <Insets right="50.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#returnToMain" text="Return" />
+                        <Button fx:id="back" mnemonicParsing="false" onAction="#returnToMain" text="Return" />
                      </children>
                   </HBox>
                </children>

@@ -30,6 +30,7 @@ public class CourseViewController implements Initializable {
     @FXML private Button back; 
     @FXML private ListView courseListView;
     @FXML private TextArea courseDetails; 
+    @FXML private Button viewDetails;
             
 
     //fields for scene switch

@@ -28,24 +28,43 @@ import javafx.stage.Stage;
  * @author Nina
  */
 public class CourseAddController implements Initializable {
-    static Course course;
     
     @FXML private Button back;
     @FXML private Button removeCourse; 
     @FXML private Button addCourse;
-    @FXML private ListView<Course> list; 
+    @FXML private ListView list; 
     @FXML private TextField addName;
     @FXML private TextField addSubject;
     @FXML private TextField addNumber;
     @FXML private TextField addCredit; 
-    private List<Course> courseList;
-  
-    //adds a course object to the courseList
+    
+    private String courseName;
+    private String courseSubject; 
+    private String courseNumber; 
+    private Integer courseCredit;
+    
+    
     @FXML
-    public void addCourse(TextField course) {
-        list.getItems();
-        //get object associated with list view
-        list.add(course.getText());
+    public void addCourse() {
+        
+        //take all data from text fields 
+        courseName = this.addName.getText().toString();
+        courseSubject = this.addSubject.getText().toString();
+        courseNumber = this.addNumber.getText().toString();
+        courseCredit = Integer.parseInt(this.addCredit.getText().toString());
+        
+        //create new course object using data 
+        Course newCourse = new Course(courseName, courseSubject, courseNumber, courseCredit);
+        
+        //add new object to list of courses
+        newCourse.getCourseList().add(newCourse);
+        
+        //clear all text fields 
+        this.addName.setText("");
+        this.addSubject.setText("");
+        this.addNumber.setText("");
+        this.addCredit.setText("");
+     
     }
     
     
@@ -69,15 +88,6 @@ public class CourseAddController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        course = new Course();
-        
-        List<String> courseListAsStrings = new ArrayList<>();
-        
-        ObservableList<Lemonade> items = FXCollections.observableList(LemonadeStand2.cart.getCart());
-        cartListView.setItems(items);
-
-        setLabels();
         
         
     }    
