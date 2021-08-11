@@ -8,6 +8,7 @@ package schoolsystemproject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,8 +18,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -30,8 +34,14 @@ public class ProfessorViewController implements Initializable {
     
     @FXML private Button back;
     @FXML private Button viewDetails;
+    @FXML private Label selectProfessor;
     @FXML private ListView professorList;
-    @FXML private TextArea professorDetails;
+    @FXML private ListView coursesTaught;
+    @FXML private TextField name;
+    @FXML private TextField age;
+    @FXML private TextField edulvl;
+    @FXML private TextField dpt;
+    @FXML private TextField finalID;
     
     //fields for scene switch
     private Stage stage; 
@@ -40,10 +50,15 @@ public class ProfessorViewController implements Initializable {
     
     
     public void setFields() {
-        ObservableList selectedProfessor = professorList.getSelectionModel().getSelectedItems();
         
+        Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
+        this.name.setText(selectedProfessor.getName());
+        this.age.setText(selectedProfessor.age().toString());
+        this.edulvl.setText(selectedProfessor.getEduLvl());
+        this.dpt.setText(selectedProfessor.getDpt());
+        this.finalID.setText(selectedProfessor.getFinalID());
+
     }
-    
     
     
     //method to return to main scene
@@ -60,7 +75,15 @@ public class ProfessorViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
+        professorList.setItems(items);
+        
+        ObservableList<Course> items2 = FXCollections.observableList(SchoolSystemProject.listOfCoursesTeaching);
+        coursesTaught.setItems(items2);
+        
+        selectProfessor.setText("");
+        
     }    
     
 }

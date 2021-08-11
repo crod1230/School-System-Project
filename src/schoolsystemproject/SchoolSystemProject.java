@@ -23,6 +23,7 @@ public class SchoolSystemProject extends Application {
     static List<Course> listOfCoursesTeaching;
     static List<Student> listOfStudents;
     static List<Course> listOfCoursesTaking;
+    static List<Course> listOfCourses;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -46,7 +47,7 @@ public class SchoolSystemProject extends Application {
         listOfCoursesTeaching = new ArrayList<>();
         listOfStudents = new ArrayList<>();
         listOfCoursesTaking = new ArrayList<>();
-        
+        listOfCourses = new ArrayList<>();
         launch(args);
     }
     

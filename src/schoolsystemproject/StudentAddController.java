@@ -10,6 +10,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -35,8 +38,14 @@ public class StudentAddController implements Initializable {
     @FXML private Button removeStudent;
     @FXML private Button addStudent;
     @FXML private Button addCourse;
+    
+    @FXML private Label selectStudent;
+    @FXML private Label enterFields;
+    @FXML private Label selectCourse;
+    
     @FXML private ListView studentList;
     @FXML private ListView coursesAvailable;
+    
     @FXML private TextField name;
     @FXML private DatePicker dob;
     @FXML private TextField grade;
@@ -83,14 +92,18 @@ public class StudentAddController implements Initializable {
         this.major.setText("");
         this.finalID.setText("");
         
-    }
-    
-    
-    public void removeStudent() {
+        ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
+        studentList.setItems(items);
         
     }
     
-    public void addCoursetoStudent() {
+    
+    public void removeStudent(ActionEvent event) {
+//        if ()
+//        SchoolSystemProject.listOfStudents.remove(dob)
+    }
+    
+    public void addCoursetoStudent(ActionEvent selectedCourse) {
         
     }
     
@@ -111,7 +124,17 @@ public class StudentAddController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
+        studentList.setItems(items);
+        
+        ObservableList<Course> items2 = FXCollections.observableList(SchoolSystemProject.listOfCourses);
+        coursesAvailable.setItems(items2);
+        
+        selectStudent.setText("");
+        selectCourse.setText("");
+        enterFields.setText("");
+        
     }    
     
 }

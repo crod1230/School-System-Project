@@ -1,3 +1,5 @@
+
+
 package schoolsystemproject;
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class Course {
     //adds a class object to the coursesTaught list
     public void addClass(Course course) {
         courseList.add(course);
-        System.out.println(course.toString() + " has been added to Professor's Course List");
+       
     }
     
     
@@ -83,10 +85,10 @@ public class Course {
     
     
     //get + set course Credit Hours 
-    public void setCredit(int newCred) {
+    public void setCredit(Integer newCred) {
         this.creditHours = newCred;
     }
-    public int getCredit() {
+    public Integer getCredit() {
         return this.creditHours;
     }
     

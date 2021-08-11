@@ -1,3 +1,5 @@
+
+
 package schoolsystemproject;
 
 import java.time.LocalDate;
@@ -16,7 +18,8 @@ public class Professor {
     private String name; //name of teacher 
     private String edulvl; //education level (bachelor, master, etc.)
     private String dpt; //subject they teach 
-    private String finalID; //unique identification for all teachers 
+    private String finalID; //unique identification for all teachers
+    List<Professor> listOfProfessors;
     List<Course> coursesTaught; //list of courses the prof teaches
     
     //name, dob, department, education lvl
@@ -33,7 +36,7 @@ public class Professor {
     
     
     //calculate and returns age of professor 
-    public int age() {
+    public Integer age() {
         LocalDate today = LocalDate.now();
         
         Period p = Period.between(this.dob, today);
@@ -54,7 +57,9 @@ public class Professor {
         coursesTaught.add(course);
     }
     
-    
+    public List<Professor> getListOfProfessors() {
+        return this.listOfProfessors;
+    }
     
     
     //get + set date of birth

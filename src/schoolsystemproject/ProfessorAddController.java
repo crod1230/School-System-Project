@@ -8,8 +8,11 @@ package schoolsystemproject;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +22,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -35,6 +40,9 @@ public class ProfessorAddController implements Initializable {
     @FXML private Button removeProfessor;
     @FXML private Button addProfessor;
     @FXML private Button addCourse;
+    @FXML private Label selectProfessor;
+    @FXML private Label enterFields;
+    @FXML private Label selectCourse;
     @FXML private ListView professorList;
     @FXML private ListView coursesAvailable;
     @FXML private TextField name;
@@ -78,10 +86,15 @@ public class ProfessorAddController implements Initializable {
         this.dpt.setText("");
         this.finalID.setText("");
         
+        ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
+        professorList.setItems(items);
+        
     }
     
     public void removeProfessor() {
-        
+//        professorList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+//        ObservableList selectedProfessor = professorList.getSelectionModel().getSelectedItems();
+//        professorList.remove(selectedProfessor);
     }
     
     public void addCourseToProfessor() {
@@ -102,7 +115,16 @@ public class ProfessorAddController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
+        professorList.setItems(items);
+        
+        ObservableList<Course> items2 = FXCollections.observableList(SchoolSystemProject.listOfCourses);
+        coursesAvailable.setItems(items2);
+        
+        selectProfessor.setText("");
+        selectCourse.setText("");
+        enterFields.setText("");
     }    
     
 }

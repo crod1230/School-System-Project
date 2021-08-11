@@ -18,6 +18,7 @@ public class Student {
     private String grade; //student grade level
     private String major; //student major 
     private String finalID; //identification number
+    private List<Student> listOfStudents;
     private List<Course> coursesTaking; //list of courses student is taking
     private Integer creditHours; //keeps count of credit hours for classes taken
     
@@ -35,7 +36,7 @@ public class Student {
     }
     
     //methods
-    public int age() {
+    public Integer age() {
         //calculate age based on dob and return it 
         LocalDate today = LocalDate.now(); //locates the current local time 
         
@@ -57,6 +58,10 @@ public class Student {
         System.out.println(course.toString() + " has been added to Student Courses Taking List");
         System.out.println("Current number of credit hours: " + this.creditHours);
         
+    }
+    
+    public List<Student> getListOfStudents() {
+        return this.listOfStudents;
     }
     
     
@@ -98,5 +103,10 @@ public class Student {
     }
     public String getFinalID() {
         return this.finalID;
+    }
+    
+    @Override
+    public String toString() {
+        return name.toString();
     }
 }
