@@ -34,9 +34,14 @@ public class ProfessorViewController implements Initializable {
     
     @FXML private Button back;
     @FXML private Button viewDetails;
+    @FXML private Button removeCourse;
+    
     @FXML private Label selectProfessor;
+    @FXML private Label selectCourse;
+    
     @FXML private ListView professorList;
     @FXML private ListView coursesTaught;
+    
     @FXML private TextField name;
     @FXML private TextField age;
     @FXML private TextField edulvl;
@@ -57,7 +62,20 @@ public class ProfessorViewController implements Initializable {
         this.edulvl.setText(selectedProfessor.getEduLvl());
         this.dpt.setText(selectedProfessor.getDpt());
         this.finalID.setText(selectedProfessor.getFinalID());
+        ObservableList<Course> courseItems = FXCollections.observableList(selectedProfessor.getCoursesTaught());
+        this.coursesTaught.setItems(courseItems);
 
+    }
+    
+    
+    public void removeCourse() {
+        Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
+        Course selectedCourse = (Course)this.professorList.getSelectionModel().getSelectedItem();
+        
+        selectedProfessor.removeCourseTaught(selectedCourse);
+        
+        ObservableList<Course> courseItems = FXCollections.observableList(selectedProfessor.getCoursesTaught());
+        this.coursesTaught.setItems(courseItems);
     }
     
     
@@ -83,6 +101,7 @@ public class ProfessorViewController implements Initializable {
         coursesTaught.setItems(items2);
         
         selectProfessor.setText("");
+        selectCourse.setText("");
         
     }    
     

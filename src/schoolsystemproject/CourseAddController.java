@@ -77,6 +77,11 @@ public class CourseAddController implements Initializable {
     
     
     public void removeCourse() {
+        Course selectedCourse = (Course) this.courseList.getSelectionModel().getSelectedItem();
+        SchoolSystemProject.listOfCourses.remove(selectedCourse);
+        
+        ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
+        courseList.setItems(items);
     }
     
     

@@ -6,6 +6,8 @@ import java.time.Month;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,6 +24,7 @@ public class Student {
     private List<Course> coursesTaking; //list of courses student is taking
     private Integer creditHours; //keeps count of credit hours for classes taken
     
+        
     //methods 
     public Student(String n, LocalDate d, String g, String m, String i) {
         //set all fields EXCEPT coursesTaking and credit 
@@ -45,8 +48,9 @@ public class Student {
         return p.getYears();
     }
     
-    public void showClasses() {
-        System.out.println("Courses student is taking: " + this.coursesTaking);
+    public List<Course> showClasses() {
+        return this.coursesTaking;
+//        System.out.println("Courses student is taking: " + this.coursesTaking);
         //print all classes the student is taking 
     }
     
@@ -55,13 +59,29 @@ public class Student {
         
         this.coursesTaking.add(course);
         this.creditHours = this.creditHours + course.getCredit();
-        System.out.println(course.toString() + " has been added to Student Courses Taking List");
-        System.out.println("Current number of credit hours: " + this.creditHours);
+//        System.out.println(course.toString() + " has been added to Student Courses Taking List");
+//        System.out.println("Current number of credit hours: " + this.creditHours);
         
     }
     
+    
+    public Integer getCreditHours() {
+        return this.creditHours;
+    }
+    
+    
+    public void removeCourse(Course course) {
+        this.coursesTaking.remove(course);
+        this.creditHours -= course.getCredit();
+    }
+    
+    
     public List<Student> getListOfStudents() {
         return this.listOfStudents;
+    }
+    
+    public List<Course> getCoursesTaking() {
+        return this.coursesTaking;
     }
     
     

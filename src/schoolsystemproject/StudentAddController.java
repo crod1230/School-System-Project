@@ -71,10 +71,10 @@ public class StudentAddController implements Initializable {
         
         //take data from text fields 
         this.studentDoB = this.dob.getValue(); //gets local date from datePicker
-        this.studentName = this.name.getText().toString();
-        this.studentGrade = this.grade.getText().toString();
-        this.studentMajor = this.major.getText().toString();
-        this.studentID = this.finalID.getText().toString();
+        this.studentName = this.name.getText();
+        this.studentGrade = this.grade.getText();
+        this.studentMajor = this.major.getText();
+        this.studentID = this.finalID.getText();
         
         
         //create new student object using data 
@@ -98,12 +98,24 @@ public class StudentAddController implements Initializable {
     }
     
     
-    public void removeStudent(ActionEvent event) {
-//        if ()
-//        SchoolSystemProject.listOfStudents.remove(dob)
+    public void removeStudent() {
+        
+        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
+        SchoolSystemProject.listOfStudents.remove(selectedStudent);
+        
+        ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
+        studentList.setItems(items);
+        
     }
     
-    public void addCoursetoStudent(ActionEvent selectedCourse) {
+    
+    public void addCoursetoStudent() {
+        //get selected student and course 
+        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
+        Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
+        
+        //add selected course to selected student coursesTaking
+        selectedStudent.addCourse(selectedCourse);
         
     }
     
@@ -130,6 +142,7 @@ public class StudentAddController implements Initializable {
         
         ObservableList<Course> items2 = FXCollections.observableList(SchoolSystemProject.listOfCourses);
         coursesAvailable.setItems(items2);
+        
         
         selectStudent.setText("");
         selectCourse.setText("");

@@ -92,13 +92,21 @@ public class ProfessorAddController implements Initializable {
     }
     
     public void removeProfessor() {
-//        professorList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-//        ObservableList selectedProfessor = professorList.getSelectionModel().getSelectedItems();
-//        professorList.remove(selectedProfessor);
+        Professor selectedProfessor = (Professor) this.professorList.getSelectionModel().getSelectedItem();
+        SchoolSystemProject.listOfProfs.remove(selectedProfessor);
+        
+        ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
+        professorList.setItems(items);
     }
     
+    
     public void addCourseToProfessor() {
+        //get selected professor and course 
+        Professor selectedProfessor = (Professor) this.professorList.getSelectionModel().getSelectedItem();
+        Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
         
+        //add selected course to selected professor coursesTaught
+        selectedProfessor.addClass(selectedCourse);
     }
     
     

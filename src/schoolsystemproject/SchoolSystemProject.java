@@ -35,9 +35,6 @@ public class SchoolSystemProject extends Application {
         stage.show();
     }
     
-    //initialize and declare static members
-    
-
     /**
      * @param args the command line arguments
      */
@@ -48,6 +45,7 @@ public class SchoolSystemProject extends Application {
         listOfStudents = new ArrayList<>();
         listOfCoursesTaking = new ArrayList<>();
         listOfCourses = new ArrayList<>();
+        
         launch(args);
     }
     

@@ -34,7 +34,10 @@ public class StudentViewController implements Initializable {
     
     @FXML private Button back;
     @FXML private Button viewDetails;
+    @FXML private Button removeCourse;
+    
     @FXML private Label selectStudent;
+    @FXML private Label selectCourse;
     
     @FXML private ListView studentList;
     @FXML private ListView coursesTaken;
@@ -44,6 +47,7 @@ public class StudentViewController implements Initializable {
     @FXML private TextField grade;
     @FXML private TextField major;
     @FXML private TextField finalID;
+    @FXML private TextField creditHours;
     
     
     public void setFields() {
@@ -54,7 +58,19 @@ public class StudentViewController implements Initializable {
         this.grade.setText(selectedStudent.getGrade());
         this.major.setText(selectedStudent.getMajor());
         this.finalID.setText(selectedStudent.getFinalID());
-
+        this.creditHours.setText(selectedStudent.getCreditHours().toString());
+        ObservableList<Course> courseItems = FXCollections.observableList(selectedStudent.getCoursesTaking());
+        this.coursesTaken.setItems(courseItems);
+    }
+    
+    public void removeCourseTaken() {
+        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
+        Course selectedCourse = (Course) this.coursesTaken.getSelectionModel().getSelectedItem();
+        
+        selectedStudent.removeCourse(selectedCourse);
+        
+        ObservableList<Course> courseItems = FXCollections.observableList(selectedStudent.getCoursesTaking());
+        this.coursesTaken.setItems(courseItems);
     }
     
     
@@ -84,6 +100,7 @@ public class StudentViewController implements Initializable {
         coursesTaken.setItems(items2);
         
         selectStudent.setText("");
+        selectCourse.setText("");
     }    
     
 }

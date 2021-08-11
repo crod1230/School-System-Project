@@ -57,8 +57,18 @@ public class Professor {
         coursesTaught.add(course);
     }
     
+    
+    public void removeCourseTaught(Course course) {
+        this.coursesTaught.remove(course);
+    }
+    
+    
     public List<Professor> getListOfProfessors() {
         return this.listOfProfessors;
+    }
+    
+    public List<Course> getCoursesTaught() {
+        return this.coursesTaught;
     }
     
     
