@@ -34,18 +34,19 @@ import javafx.stage.Stage;
  */
 public class StudentAddController implements Initializable {
     
+    //Buttons
     @FXML private Button back;
     @FXML private Button removeStudent;
     @FXML private Button addStudent;
     @FXML private Button addCourse;
-    
+    //Labels
     @FXML private Label selectStudent;
     @FXML private Label enterFields;
     @FXML private Label selectCourse;
-    
+    //Lists
     @FXML private ListView studentList;
     @FXML private ListView coursesAvailable;
-    
+    //TextFields
     @FXML private TextField name;
     @FXML private DatePicker dob;
     @FXML private TextField grade;
@@ -110,6 +111,7 @@ public class StudentAddController implements Initializable {
     
     
     public void addCoursetoStudent() {
+        
         //get selected student and course 
         Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
         Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
@@ -118,10 +120,6 @@ public class StudentAddController implements Initializable {
         selectedStudent.addCourse(selectedCourse);
         
     }
-    
-    
-    
-    
     
     
     @FXML

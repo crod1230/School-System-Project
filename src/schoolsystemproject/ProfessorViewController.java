@@ -70,7 +70,7 @@ public class ProfessorViewController implements Initializable {
     
     public void removeCourse() {
         Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
-        Course selectedCourse = (Course)this.professorList.getSelectionModel().getSelectedItem();
+        Course selectedCourse = (Course)this.coursesTaught.getSelectionModel().getSelectedItem();
         
         selectedProfessor.removeCourseTaught(selectedCourse);
         
