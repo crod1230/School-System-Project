@@ -49,13 +49,17 @@ public class CourseViewController implements Initializable {
     
     
     public void setFields() {
-        
-        Course selectedCourse = (Course)this.courseListView.getSelectionModel().getSelectedItem();
-        this.courseName.setText(selectedCourse.getCourseName());
-        this.courseSubject.setText(selectedCourse.getCourseSubj());
-        this.courseNumber.setText(selectedCourse.getCourseNum());        
-        this.courseCredit.setText(selectedCourse.getCredit().toString());
-         
+        if (this.courseListView.getSelectionModel().isEmpty() == true) {
+            selectCourse.setVisible(true);
+        }
+        else {
+            selectCourse.setVisible(false);
+            Course selectedCourse = (Course)this.courseListView.getSelectionModel().getSelectedItem();
+            this.courseName.setText(selectedCourse.getCourseName());
+            this.courseSubject.setText(selectedCourse.getCourseSubj());
+            this.courseNumber.setText(selectedCourse.getCourseNum());        
+            this.courseCredit.setText(selectedCourse.getCredit().toString());
+        }
     }
     
     
@@ -76,7 +80,7 @@ public class CourseViewController implements Initializable {
         ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
         courseListView.setItems(items);
         
-        selectCourse.setText("");
+        selectCourse.setVisible(false);
     }    
     
 }

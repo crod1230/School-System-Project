@@ -52,32 +52,46 @@ public class StudentViewController implements Initializable {
     
     //Set fields when viewDetails button is pushed 
     public void setFields() {
-        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem(); //get selected student
-        this.name.setText(selectedStudent.getName()); //set name textfield to selected student name 
-        this.age.setText(selectedStudent.age().toString()); //set age textfield to selected student based calculated from dob 
-        this.grade.setText(selectedStudent.getGrade()); //set grade textfield to selected student grade 
-        this.major.setText(selectedStudent.getMajor()); //set major textfield to selected student major
-        this.finalID.setText(selectedStudent.getFinalID()); //set final ID textfield to selected student finalID
-        this.creditHours.setText(selectedStudent.getCreditHours().toString()); //set credit hours textfield to selected student credit hours based on coursesTaking
-        ObservableList<Course> courseItems = FXCollections.observableList(selectedStudent.getCoursesTaking()); //convert ArrayList to ObservableList
-        this.coursesTaken.setItems(courseItems); //set coursesTaken list to selected student courses taken
+        
+        if (this.studentList.getSelectionModel().isEmpty() == true) {
+            selectStudent.setVisible(true);
+        }
+        else {
+            selectStudent.setVisible(false);
+            Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem(); //get selected student
+            this.name.setText(selectedStudent.getName()); //set name textfield to selected student name 
+            this.age.setText(selectedStudent.age().toString()); //set age textfield to selected student based calculated from dob 
+            this.grade.setText(selectedStudent.getGrade()); //set grade textfield to selected student grade 
+            this.major.setText(selectedStudent.getMajor()); //set major textfield to selected student major
+            this.finalID.setText(selectedStudent.getFinalID()); //set final ID textfield to selected student finalID
+            this.creditHours.setText(selectedStudent.getCreditHours().toString()); //set credit hours textfield to selected student credit hours based on coursesTaking
+            ObservableList<Course> courseItems = FXCollections.observableList(selectedStudent.getCoursesTaking()); //convert ArrayList to ObservableList
+            this.coursesTaken.setItems(courseItems); //set coursesTaken list to selected student courses taken
+        }
     }
     
     //Removes a course object from coursesTaken list when removeCourse button is pushed 
     public void removeCourseTaken() {
-        //gets selected student and course objects
-        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem(); 
-        Course selectedCourse = (Course) this.coursesTaken.getSelectionModel().getSelectedItem(); 
+        if (this.coursesTaken.getSelectionModel().isEmpty() == true) {
+            selectCourse.setVisible(true);
+        }
+        else {
+            selectCourse.setVisible(false);
+            
+            //gets selected student and course objects
+            Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem(); 
+            Course selectedCourse = (Course) this.coursesTaken.getSelectionModel().getSelectedItem(); 
         
-        //removes selected course object from selected student's coursesTaken list
-        selectedStudent.removeCourse(selectedCourse); 
+            //removes selected course object from selected student's coursesTaken list
+            selectedStudent.removeCourse(selectedCourse); 
         
-        //updates the coursesTaking list 
-        ObservableList<Course> courseItems = FXCollections.observableList(selectedStudent.getCoursesTaking());
-        this.coursesTaken.setItems(courseItems);
+            //updates the coursesTaking list 
+            ObservableList<Course> courseItems = FXCollections.observableList(selectedStudent.getCoursesTaking());
+            this.coursesTaken.setItems(courseItems);
         
-        //takes back credit hours from removed course 
-        this.creditHours.setText(selectedStudent.getCreditHours().toString());
+            //takes back credit hours from removed course 
+            this.creditHours.setText(selectedStudent.getCreditHours().toString());
+        }
     }
     
     
@@ -108,8 +122,8 @@ public class StudentViewController implements Initializable {
         coursesTaken.setItems(items2);
         
         //initialize labels as blank 
-        selectStudent.setText("");
-        selectCourse.setText("");
+        selectStudent.setVisible(false);
+        selectCourse.setVisible(false);
     }    
     
 }

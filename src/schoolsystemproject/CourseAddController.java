@@ -52,36 +52,49 @@ public class CourseAddController implements Initializable {
     @FXML
     public void addCourse() {
         
-        //take all data from text fields 
-        courseName = this.addName.getText().toString();
-        courseSubject = this.addSubject.getText().toString();
-        courseNumber = this.addNumber.getText().toString();
-        courseCredit = Integer.parseInt(this.addCredit.getText().toString());
+        if ((this.addName.getText().isEmpty() == true)||(this.addSubject.getText().isEmpty() == true)||(this.addNumber.getText().isEmpty() == true)||(this.addCredit.getText().isEmpty() == true)) {
+            enterFields.setVisible(true);
+        }
+        else {
+            enterFields.setVisible(false);
+            
+            //take all data from text fields 
+            courseName = this.addName.getText().toString();
+            courseSubject = this.addSubject.getText().toString();
+            courseNumber = this.addNumber.getText().toString();
+            courseCredit = Integer.parseInt(this.addCredit.getText().toString());
         
-        //create new course object using data 
-        Course newCourse = new Course(courseName, courseSubject, courseNumber, courseCredit);
+            //create new course object using data 
+            Course newCourse = new Course(courseName, courseSubject, courseNumber, courseCredit);
         
-        //add new object to list of courses
-        SchoolSystemProject.listOfCourses.add(newCourse);
+            //add new object to list of courses
+            SchoolSystemProject.listOfCourses.add(newCourse);
         
-        //clear all text fields 
-        this.addName.setText("");
-        this.addSubject.setText("");
-        this.addNumber.setText("");
-        this.addCredit.setText("");
+            //clear all text fields 
+            this.addName.setText("");
+            this.addSubject.setText("");
+            this.addNumber.setText("");
+            this.addCredit.setText("");
         
-        ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
-        courseList.setItems(items);
+            ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
+            courseList.setItems(items);
+        }
      
     }
     
     
     public void removeCourse() {
-        Course selectedCourse = (Course) this.courseList.getSelectionModel().getSelectedItem();
-        SchoolSystemProject.listOfCourses.remove(selectedCourse);
+        if (this.courseList.getSelectionModel().isEmpty() == true) {
+            selectCourse.setVisible(true);
+        }
+        else {
+            selectCourse.setVisible(false);
+            Course selectedCourse = (Course) this.courseList.getSelectionModel().getSelectedItem();
+            SchoolSystemProject.listOfCourses.remove(selectedCourse);
         
-        ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
-        courseList.setItems(items);
+            ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
+            courseList.setItems(items);
+        }
     }
     
     
@@ -109,8 +122,8 @@ public class CourseAddController implements Initializable {
         ObservableList<Course> items = FXCollections.observableList(SchoolSystemProject.listOfCourses);
         courseList.setItems(items);
         
-        selectCourse.setText("");
-        enterFields.setText("");
+        selectCourse.setVisible(false);
+        enterFields.setVisible(false);
     }    
     
 }

@@ -69,56 +69,72 @@ public class StudentAddController implements Initializable {
     
     
     public void addStudent() {
-        
-        //take data from text fields 
-        this.studentDoB = this.dob.getValue(); //gets local date from datePicker
-        this.studentName = this.name.getText();
-        this.studentGrade = this.grade.getText();
-        this.studentMajor = this.major.getText();
-        this.studentID = this.finalID.getText();
-        
-        
-        //create new student object using data 
-        Student newStudent = new Student(studentName, studentDoB, studentGrade, studentMajor, studentID);
-        
-        
-        //add student object to static list of students
-        SchoolSystemProject.listOfStudents.add(newStudent);
+        if ((this.name.getText().isEmpty() == true)||(this.dob.getValue() == null)||(this.grade.getText().isEmpty() == true)||(this.major.getText().isEmpty() == true)||(this.finalID.getText().isEmpty() == true)) {
+            enterFields.setVisible(true);
+        }
+        else {
+            enterFields.setVisible(false);
+            
+            //take data from text fields 
+            this.studentDoB = this.dob.getValue(); //gets local date from datePicker
+            this.studentName = this.name.getText();
+            this.studentGrade = this.grade.getText();
+            this.studentMajor = this.major.getText();
+            this.studentID = this.finalID.getText();
         
         
-        //clear all text fields 
-        this.name.setText("");
-        this.dob.getEditor().clear();
-        this.grade.setText("");
-        this.major.setText("");
-        this.finalID.setText("");
+            //create new student object using data 
+            Student newStudent = new Student(studentName, studentDoB, studentGrade, studentMajor, studentID);
         
-        ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
-        studentList.setItems(items);
+        
+            //add student object to static list of students
+            SchoolSystemProject.listOfStudents.add(newStudent);
+        
+        
+            //clear all text fields 
+            this.name.setText("");
+            this.dob.getEditor().clear();
+            this.grade.setText("");
+            this.major.setText("");
+            this.finalID.setText("");
+        
+            ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
+            studentList.setItems(items);
+        }
         
     }
     
     
     public void removeStudent() {
         
-        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
-        SchoolSystemProject.listOfStudents.remove(selectedStudent);
+        if (this.studentList.getSelectionModel().isEmpty() == true) {
+            selectStudent.setVisible(true);
+        }
+        else {
+            selectStudent.setVisible(false);
+            Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
+            SchoolSystemProject.listOfStudents.remove(selectedStudent);
         
-        ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
-        studentList.setItems(items);
-        
+            ObservableList<Student> items = FXCollections.observableList(SchoolSystemProject.listOfStudents);
+            studentList.setItems(items);
+        }
     }
     
     
     public void addCoursetoStudent() {
         
-        //get selected student and course 
-        Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
-        Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
+        if (this.coursesAvailable.getSelectionModel().isEmpty() == true) {
+            selectCourse.setVisible(true);
+        }
+        else {
+            selectCourse.setVisible(false);
+            //get selected student and course 
+            Student selectedStudent = (Student) this.studentList.getSelectionModel().getSelectedItem();
+            Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
         
-        //add selected course to selected student coursesTaking
-        selectedStudent.addCourse(selectedCourse);
-        
+            //add selected course to selected student coursesTaking
+            selectedStudent.addCourse(selectedCourse);
+        }
     }
     
     
@@ -142,9 +158,9 @@ public class StudentAddController implements Initializable {
         coursesAvailable.setItems(items2);
         
         
-        selectStudent.setText("");
-        selectCourse.setText("");
-        enterFields.setText("");
+        selectStudent.setVisible(false);
+        selectCourse.setVisible(false);
+        enterFields.setVisible(false);
         
     }    
     

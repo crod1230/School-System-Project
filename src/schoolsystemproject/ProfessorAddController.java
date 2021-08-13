@@ -66,47 +66,66 @@ public class ProfessorAddController implements Initializable {
     
     public void addProfessor() {
         
-        //take data from text fields 
-        this.profDoB = this.dob.getValue(); //gets local date from datePicker
-        this.profName = this.name.getText().toString();
-        this.profDpt = this.dpt.getText().toString();
-        this.profEduLvl = this.edulvl.getText().toString();
-        this.profID = this.finalID.getText().toString();
+        if ((this.name.getText().isEmpty() == true)||(this.dob.getValue() == null)||(this.edulvl.getText().isEmpty() == true)||(this.dpt.getText().isEmpty() == true)||(this.finalID.getText().isEmpty() == true)) {
+            enterFields.setVisible(true);
+        }
+        else {
+            enterFields.setVisible(false);
+            
+            //take data from text fields 
+            this.profDoB = this.dob.getValue(); //gets local date from datePicker
+            this.profName = this.name.getText().toString();
+            this.profDpt = this.dpt.getText().toString();
+            this.profEduLvl = this.edulvl.getText().toString();
+            this.profID = this.finalID.getText().toString();
         
-        //create new professor object with data 
-        Professor newProf = new Professor(profName, profDoB, profDpt, profEduLvl, profID);
+            //create new professor object with data 
+            Professor newProf = new Professor(profName, profDoB, profDpt, profEduLvl, profID);
         
-        //add professor object to ataic list of professors 
-        SchoolSystemProject.listOfProfs.add(newProf);
+            //add professor object to ataic list of professors 
+            SchoolSystemProject.listOfProfs.add(newProf);
         
-        //clear all text fields 
-        this.name.setText("");
-        this.dob.getEditor().clear();
-        this.edulvl.setText("");
-        this.dpt.setText("");
-        this.finalID.setText("");
+            //clear all text fields 
+            this.name.setText("");
+            this.dob.getEditor().clear();
+            this.edulvl.setText("");
+            this.dpt.setText("");
+            this.finalID.setText("");
         
-        ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
-        professorList.setItems(items);
+            ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
+            professorList.setItems(items);
+        }
         
     }
     
     public void removeProfessor() {
-        Professor selectedProfessor = (Professor) this.professorList.getSelectionModel().getSelectedItem();
-        SchoolSystemProject.listOfProfs.remove(selectedProfessor);
+        if (this.professorList.getSelectionModel().isEmpty() == true) {
+            selectProfessor.setVisible(true);
+        }
+        else {
+            selectProfessor.setVisible(false);
+            Professor selectedProfessor = (Professor) this.professorList.getSelectionModel().getSelectedItem();
+            SchoolSystemProject.listOfProfs.remove(selectedProfessor);
         
-        ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
-        professorList.setItems(items);
+            ObservableList<Professor> items = FXCollections.observableList(SchoolSystemProject.listOfProfs);
+            professorList.setItems(items);
+        }
     }
     
     
     public void addCourseToProfessor() {
-        //get selected professor and course 
-        Professor selectedProfessor = (Professor) this.professorList.getSelectionModel().getSelectedItem();
-        Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
+        if (this.coursesAvailable.getSelectionModel().isEmpty() == true) {
+            selectCourse.setVisible(true);
+        }
+        else {
+            selectCourse.setVisible(false);
+            //get selected professor and course 
+            Professor selectedProfessor = (Professor) this.professorList.getSelectionModel().getSelectedItem();
+            Course selectedCourse = (Course)this.coursesAvailable.getSelectionModel().getSelectedItem();
         
-        //add selected course to selected professor coursesTaught
-        selectedProfessor.addClass(selectedCourse);
+            //add selected course to selected professor coursesTaught
+            selectedProfessor.addClass(selectedCourse);
+        }
     }
     
     
@@ -130,9 +149,9 @@ public class ProfessorAddController implements Initializable {
         ObservableList<Course> items2 = FXCollections.observableList(SchoolSystemProject.listOfCourses);
         coursesAvailable.setItems(items2);
         
-        selectProfessor.setText("");
-        selectCourse.setText("");
-        enterFields.setText("");
+        selectProfessor.setVisible(false);
+        selectCourse.setVisible(false);
+        enterFields.setVisible(false);
     }    
     
 }

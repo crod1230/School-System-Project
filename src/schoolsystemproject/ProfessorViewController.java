@@ -55,27 +55,39 @@ public class ProfessorViewController implements Initializable {
     
     
     public void setFields() {
+        if (this.professorList.getSelectionModel().isEmpty() == true) {
+            selectProfessor.setVisible(true);
+        }
+        else {
+            selectProfessor.setVisible(false);
+            Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
+            this.name.setText(selectedProfessor.getName());
+            this.age.setText(selectedProfessor.age().toString());
+            this.edulvl.setText(selectedProfessor.getEduLvl());
+            this.dpt.setText(selectedProfessor.getDpt());
+            this.finalID.setText(selectedProfessor.getFinalID());
+            ObservableList<Course> courseItems = FXCollections.observableList(selectedProfessor.getCoursesTaught());
+            this.coursesTaught.setItems(courseItems);
+        }
         
-        Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
-        this.name.setText(selectedProfessor.getName());
-        this.age.setText(selectedProfessor.age().toString());
-        this.edulvl.setText(selectedProfessor.getEduLvl());
-        this.dpt.setText(selectedProfessor.getDpt());
-        this.finalID.setText(selectedProfessor.getFinalID());
-        ObservableList<Course> courseItems = FXCollections.observableList(selectedProfessor.getCoursesTaught());
-        this.coursesTaught.setItems(courseItems);
-
     }
     
     
     public void removeCourse() {
-        Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
-        Course selectedCourse = (Course)this.coursesTaught.getSelectionModel().getSelectedItem();
         
-        selectedProfessor.removeCourseTaught(selectedCourse);
+        if (this.coursesTaught.getSelectionModel().isEmpty() == true) {
+            selectCourse.setVisible(true);
+        }
+        else {
+            selectCourse.setVisible(false);
+            Professor selectedProfessor = (Professor)this.professorList.getSelectionModel().getSelectedItem();
+            Course selectedCourse = (Course)this.coursesTaught.getSelectionModel().getSelectedItem();
         
-        ObservableList<Course> courseItems = FXCollections.observableList(selectedProfessor.getCoursesTaught());
-        this.coursesTaught.setItems(courseItems);
+            selectedProfessor.removeCourseTaught(selectedCourse);
+        
+            ObservableList<Course> courseItems = FXCollections.observableList(selectedProfessor.getCoursesTaught());
+            this.coursesTaught.setItems(courseItems);
+        }
     }
     
     
@@ -100,8 +112,8 @@ public class ProfessorViewController implements Initializable {
         ObservableList<Course> items2 = FXCollections.observableList(SchoolSystemProject.listOfCoursesTeaching);
         coursesTaught.setItems(items2);
         
-        selectProfessor.setText("");
-        selectCourse.setText("");
+        selectProfessor.setVisible(false);
+        selectCourse.setVisible(false);
         
     }    
     
