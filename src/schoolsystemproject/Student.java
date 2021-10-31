@@ -1,4 +1,3 @@
-package schoolsystemproject;
 
 
 import java.time.LocalDate;

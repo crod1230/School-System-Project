@@ -1,6 +1,6 @@
 
 
-package schoolsystemproject;
+
 
 import java.time.LocalDate;
 import java.time.Month;

@@ -1,9 +1,6 @@
 
 
 import java.time.LocalDate;
-import schoolsystemproject.Course;
-import schoolsystemproject.Professor;
-import schoolsystemproject.Student;
 
 /**
  *
